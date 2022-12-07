@@ -66,6 +66,5 @@ GameInputs read_inputs()
     in.ns_down = navs.down();
     in.ns_center = navs.center();
 
-    wait(0.02); //For simple debouncing
     return in;
 }

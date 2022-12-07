@@ -10,15 +10,19 @@
 
 
 #include "viper.h"
+#include "map.h"
 #include <stdio.h>
-
+#include <stdlib.h> // for random function
+#include <ctime>    // seed different random generator
 
 
 void viper_init (Viper * v)
 {
     // TODO: Implement
-    //1. Set starting coordinates for your viper head and previous
-    v->head_x = v->head_y = v->head_px = v->head_py = 5;
+    //1. Set (random) starting coordinates for your viper head and previous
+    // random: (rand() % (upper - lower + 1)) + lower;
+    v->head_x = v->head_px = (rand() % (map_width() - 5 - 5 + 1)) + 5;
+    v->head_y = v->head_py = (rand() % (map_height() - 5 - 5 + 1)) + 5;
 
     //2. Initialize all location for your maximum viper body (loop through the viper)
 
@@ -28,16 +32,15 @@ void viper_init (Viper * v)
     v->length = 3;
 
     for (int i = 0; i < VIPER_MAX_LENGTH; i++) {
-        if (i < v->length - 1) {
+        if (i < (v->length - 1)) {
             v->locations[i].x = v->head_x - (i + 1);
             v->locations[i].y = v->head_y;
-        } else {
-            v->locations[i].x = 0;
-            v->locations[i].y = 0;
+            continue;
         }
+        v->locations[i].x = -99; // out of map's vision
+        v->locations[i].y = -99;
     }
 
     //5. Initialize viper status
     v->score = 0;
-
 }

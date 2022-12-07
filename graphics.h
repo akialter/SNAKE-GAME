@@ -39,6 +39,17 @@ void draw_chest(int u, int v);
 void draw_viper_body(int u, int v);
 void draw_viper_head(int u, int v);
 void draw_viper_tail(int u, int v);
+void draw_angry_body(int u, int v);
+void draw_angry_head(int u, int v);
+void draw_angry_tail(int u, int v);
+void draw_option_continue(int u, int v);
+void draw_option_exit(int u, int v);
+void draw_option_start(int u, int v);
+void draw_option_mode(int u, int v);
+void draw_option_arrow(int arrow_status);
+void draw_title(int u, int v);
+void clear_screen(int screen_status);
+void clear_mode_selection(int arrow_status);
 
 
 #endif // GRAPHICS_H

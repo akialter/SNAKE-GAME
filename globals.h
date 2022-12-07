@@ -52,6 +52,20 @@ extern wave_player waver;   // Wave player
 #define MOVED 9
 #define GOT_LENGTH 10
 #define GOT_OBJ 11
+#define GAME_MENU 12
+#define GAME_PLAY 13
+#define DRAW_MENU 14
+#define PRESS 15
+#define CONTINUE 16
+#define EXIT 17
+#define START 18
+#define MODE 19
+#define EASY 20
+#define MEDIUM 21
+#define HARD 22
+#define GAME_START 23
+#define DRAW_START 24
+#define DRAW_OVER 25
 
 // === [define the macro of error handle function] ===
 // when the condition (c) is not true, assert the program and show error code

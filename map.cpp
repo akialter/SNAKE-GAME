@@ -10,11 +10,11 @@
 
 
 #include "map.h"
-
+#include <stdlib.h> // For malloc and free
 #include "globals.h"
 #include "graphics.h"
 
-#define MHF_NBUCKETS 97
+#define MHF_NBUCKETS 100
 
 /**
  * The Map structure. This holds a HashTable for all the MapItems, along with
@@ -258,6 +258,13 @@ void map_erase(int x, int y)
     if (val) free(val); // If something is already there, free it
 }
 
+/**
+ * Destroy current map's HashTable
+ */
+void map_destroy() {
+    destroyHashTable(get_active_map()->items);
+}
+
 void add_wall(int x, int y, int dir, int len)
 {
     for(int i = 0; i < len; i++)
@@ -344,6 +351,41 @@ void add_viper_tail(int x, int y)
     MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
     w1->type = VIPER_BODY;
     w1->draw = draw_viper_tail;
+    w1->walkable = false;
+    w1->data = NULL;
+    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
+    if (val) free(val); // If something is already there, free it
+}
+
+// DRAW ANGRY VIPER
+
+void add_angry_body(int x, int y)
+{
+    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
+    w1->type = ANGRY_BODY;
+    w1->draw = draw_angry_body;
+    w1->walkable = false;
+    w1->data = NULL;
+    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
+    if (val) free(val); // If something is already there, free it
+}
+
+void add_angry_head(int x, int y)
+{
+    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
+    w1->type = ANGRY_BODY;
+    w1->draw = draw_angry_head;
+    w1->walkable = false;
+    w1->data = NULL;
+    void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);
+    if (val) free(val); // If something is already there, free it
+}
+
+void add_angry_tail(int x, int y)
+{
+    MapItem* w1 = (MapItem*) malloc(sizeof(MapItem));
+    w1->type = ANGRY_BODY;
+    w1->draw = draw_angry_tail;
     w1->walkable = false;
     w1->data = NULL;
     void* val = insertItem(get_active_map()->items, XY_KEY(x, y), w1);

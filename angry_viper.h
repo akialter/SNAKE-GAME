@@ -9,32 +9,36 @@
 //==================================================================
 
 
-#ifndef VIPER_H
-#define VIPER_H
+#ifndef ANGRY_VIPER_H
+#define ANGRY_VIPER_H
 
-#define VIPER_MAX_LENGTH 10 // Change here to test game over when Viper max length
-#define NEUTRAL     0
-#define BOOST_UP    1
-#define BOOST_DOWN  2
+#define ANGRY_VIPER_LENGTH 5
+#define ANGRY_MOVE_UP 1 // each moving state of the angry viper
+#define ANGRY_MOVE_DOWN 2
+#define ANGRY_MOVE_LEFT 3
+#define ANGRY_MOVE_RIGHT 4
+#define ANGRY_STOP 5
+
+
 
 // Structure of coordinates in the map
 typedef struct{
     int x;
     int y;
-} Coordinate;
+} Location;
 
 // Viper Structure
 typedef struct {
-    int head_x, head_y, head_px, head_py; // Location of the head of the viper
-    int length; // length of the viper
-    Coordinate locations[VIPER_MAX_LENGTH]; // Viper body locations
-    int score; //Current score of the viper
-} Viper;
+    int head_x, head_y, head_px, head_py; // Location of the head of the angry viper
+    int length; // length of the angry viper
+    Location locations[ANGRY_VIPER_LENGTH]; // Angry viper body locations
+    int step_x, step_y; // the step and direction of the angry viper (1, 0 or -1 for both values)
+    int distance; // the distance that the angry viper moves
+} AngryViper;
 
 // Initialize a viper structure
 // You want to assign initial values to each of the variables defined above
 // in the viper structure.
-void viper_init (Viper* viper);
+void angry_viper_init(AngryViper* angry_viper);
 
-
-#endif VIPER_H  // VIPER_H
+#endif ANGRY_VIPER_H  // VIPER_H

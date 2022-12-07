@@ -72,7 +72,7 @@ typedef struct {
 #define CHEST       5
 #define VIPER_BODY  6
 #define CLEAR       7
-#define STAIRS      8
+#define ANGRY_BODY  8
 #define SONAR       9
 #define PUZZLE      10
 #define NPC         11
@@ -162,6 +162,11 @@ MapItem* get_here(int x, int y);
 void map_erase(int x, int y);
 
 /**
+ * Destroy current map's HashTable
+ */
+void map_destroy();
+
+/**
  * Add WALL items in a line of length len beginning at (x,y).
  * If dir == HORIZONTAL, the line is in the direction of increasing x.
  * If dir == VERTICAL, the line is in the direction of increasing y.
@@ -181,8 +186,14 @@ void add_chest(int x, int y);
 void add_water(int x, int y);
 void remove_chest(int x, int y);
 
+// HUNGRY VIPER
 void add_viper_body(int x, int y);
 void add_viper_head(int x, int y);
 void add_viper_tail(int x, int y);
+
+// ANGRY VIPER
+void add_angry_body(int x, int y);
+void add_angry_head(int x, int y);
+void add_angry_tail(int x, int y);
 
 #endif //MAP_H

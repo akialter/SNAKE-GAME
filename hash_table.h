@@ -1,12 +1,13 @@
-//=================================================================
+// ============================================
 // The header file for HashTable class file.
-// 
-// Copyright 2022 Georgia Tech.  All rights reserved.
+//
+// Copyright 2022 Georgia Tech. All rights reserved.
 // The materials provided by the instructor in this course are for
 // the use of the students currently enrolled in the course.
 // Copyrighted course materials may not be further disseminated.
-// This file must not be made publicly available anywhere.
-//=================================================================
+// This file must NOT be made publicly available anywhere.
+//==================================================================
+
 
 /****************************************************************************
  * Include guards
@@ -135,5 +136,3 @@ void* removeItem(HashTable* myHashTable, unsigned int key);
 void deleteItem(HashTable* myHashTable, unsigned int key);
 
 #endif // HASHTABLE_H
-
-
